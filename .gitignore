@@ -1,0 +1,26 @@
+# Rust build artifacts
+/target/
+**/*.rs.bk
+
+# Cargo package files
+/Cargo.lock
+
+# VSCode
+.vscode/
+
+# MacOS
+.DS_Store
+
+# Node/npm artifacts (se misturar JS/TS para testes)
+node_modules/
+dist/
+*.log
+.env
+
+# WASM/Workers
+*.wasm
+*.wasm.map
+
+# Misc
+.idea/
+*.swp

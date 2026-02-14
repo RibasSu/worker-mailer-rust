@@ -1,0 +1,31 @@
+[package]
+name = "worker-mailer"
+version = "0.1.0"
+edition = "2021"
+description = "Send emails via SMTP from Cloudflare Workers (Rust)"
+license = "MIT"
+repository = "https://github.com/RibasSu/worker-mailer-rs"
+keywords = ["cloudflare", "workers", "email", "smtp"]
+authors = ["André Ribas (@RibasSu)"]
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+worker = { version = "0.7", features = ["queue"] }
+serde = { version = "1.0", features = ["derive"] }
+base64 = "0.22"
+regex = "1.10"
+thiserror = "1.0"
+getrandom = { version = "0.2", features = ["js"] }
+uuid = { version = "1.11", features = ["v4", "js"] }
+tokio = { version = "1", default-features = false, features = ["io-util"] }
+
+[features]
+default = []
+
+[profile.release]
+opt-level = "z"
+lto = true
+strip = true
+codegen-units = 1
